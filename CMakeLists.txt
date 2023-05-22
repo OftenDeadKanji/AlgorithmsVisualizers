@@ -75,4 +75,6 @@ foreach(LIB_NAME IN LISTS LIB_NAMES)
     list(APPEND LIBS ${LIB_${LIB_NAME}})
 endforeach()
 
-target_link_libraries(PathFinding PUBLIC ${LIBS})
+add_subdirectory("dependencies/src/ImGUI/")
+
+target_link_libraries(PathFinding PUBLIC ImGui ${LIBS})
