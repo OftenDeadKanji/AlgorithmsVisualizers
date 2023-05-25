@@ -1,5 +1,5 @@
-#include "ImGUI/imgui.h"
-#include "ImGUI/imgui-SFML.h"
+#include <ImGUI/imgui.h>
+#include <ImGUI/imgui-SFML.h>
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/CircleShape.hpp>
@@ -7,13 +7,21 @@
 #include <SFML/System/Clock.hpp>
 #include <SFML/Window/Event.hpp>
 
+#include <iostream>
+
 int main() {
     sf::RenderWindow window(sf::VideoMode(sf::Vector2u(640, 480)), "ImGui + SFML = <3");
-    window.setFramerateLimit(60);
+    
     ImGui::SFML::Init(window);
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
+   
+    sf::RenderTexture renderTexture;
+    renderTexture.create(sf::Vector2u(640, 480));
 
     sf::Clock deltaClock;
     while (window.isOpen()) {
@@ -28,14 +36,27 @@ int main() {
 
         ImGui::SFML::Update(window, deltaClock.restart());
 
-        ImGui::ShowDemoWindow();
+        ImGui::DockSpaceOverViewport();
+        
+        ImGui::Begin("Viewport", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
+        sf::Vector2u viewportSize = ImGui::GetWindowSize();
+        sf::Vector2u currentRenderTextureSize = renderTexture.getSize();
+        if (viewportSize != currentRenderTextureSize)
+        {
+            renderTexture.create(viewportSize);
+        }
+        
+        renderTexture.clear();
+        renderTexture.draw(shape);
+        ImGui::Image(renderTexture);
+        ImGui::End();
 
-        ImGui::Begin("Hello, world!");
+        ImGui::Begin("Hello, world!", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
         ImGui::Button("Look at this pretty button");
         ImGui::End();
 
+
         window.clear();
-        window.draw(shape);
         ImGui::SFML::Render(window);
         window.display();
     }
