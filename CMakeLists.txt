@@ -7,6 +7,19 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(SOURCES
     "src/main.cpp"
+    "src/application.cpp" 
+    "src/application.hpp"
+    
+    "src/MVC/model.cpp" 
+    "src/MVC/model.hpp" 
+
+    "src/MVC/view.cpp"
+    "src/MVC/view.hpp"
+
+    "src/MVC/controller.cpp"
+    "src/MVC/controller.hpp"
+
+    "src/Utils/Timer/timer.cpp"
 )
 
 add_executable(PathFinding ${SOURCES})
