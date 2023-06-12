@@ -1,6 +1,7 @@
 #include "application.hpp"
 #include "../MVC/Menu/menuController.hpp"
 #include "../MVC/Sorting/sortingController.hpp"
+#include "../MVC/PathFinding/pathFindingController.hpp"
 #include <ImGUI/imgui.h>
 #include <ImGUI/imgui-SFML.h>
 
@@ -70,6 +71,12 @@ void Application::changeApplicationState(ApplicationState newState)
 		m_model = std::make_unique<SortingModel>();
 		m_view = std::make_unique<SortingView>(m_window);
 		m_controller = std::make_unique<SortingController>(static_cast<SortingModel&>(*m_model), static_cast<SortingView&>(*m_view));
+
+		break;
+	case ApplicationState::PathFinding:
+		m_model = std::make_unique<PathFindingModel>();
+		m_view = std::make_unique<PathFindingView>(m_window);
+		m_controller = std::make_unique<PathFindingController>(static_cast<PathFindingModel&>(*m_model), static_cast<PathFindingView&>(*m_view));
 
 		break;
 	}

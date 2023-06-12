@@ -29,6 +29,12 @@ set(SOURCES
     "src/MVC/Sorting/sortingController.cpp"
     "src/MVC/Sorting/sortingController.hpp"
 
+    "src/MVC/PathFinding/pathFindingModel.hpp" 
+    "src/MVC/PathFinding/pathFindingView.cpp" 
+    "src/MVC/PathFinding/pathFindingView.hpp" 
+    "src/MVC/PathFinding/pathFindingController.cpp"
+    "src/MVC/PathFinding/pathFindingController.hpp"
+
     "src/Utils/Timer/timer.cpp"
 )
 

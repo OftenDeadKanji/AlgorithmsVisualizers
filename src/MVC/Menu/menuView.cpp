@@ -19,9 +19,21 @@ void MenuView::updateImGuiUIOptionsWindow()
 			m_callback_onSortingButtonClick();
 		}
 	}
+	if (ImGui::Button("Path Finding"))
+	{
+		if (m_callback_onPathFindingButtonClick)
+		{
+			m_callback_onPathFindingButtonClick();
+		}
+	}
 }
 
 void MenuView::setSortingButtonClickCallback(std::function<void()> callback)
 {
 	m_callback_onSortingButtonClick = std::move(callback);
+}
+
+void MenuView::setPathFindingButtonClickCallback(std::function<void()> callback)
+{
+	m_callback_onPathFindingButtonClick = std::move(callback);
 }

@@ -4,7 +4,8 @@
 enum class ApplicationState
 {
 	Menu,
-	Sorting
+	Sorting,
+	PathFinding
 };
 
 #endif

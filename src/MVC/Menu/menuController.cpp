@@ -6,4 +6,8 @@ MenuController::MenuController(MenuModel& model, MenuView& view)
 	view.setSortingButtonClickCallback([&]() {
 		m_nextState = ApplicationState::Sorting;
 		});
+
+	view.setPathFindingButtonClickCallback([&]() {
+		m_nextState = ApplicationState::PathFinding;
+		});
 }

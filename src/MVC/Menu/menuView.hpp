@@ -14,8 +14,10 @@ public:
 	void updateImGuiUIOptionsWindow() override;
 
 	void setSortingButtonClickCallback(std::function<void()> callback);
+	void setPathFindingButtonClickCallback(std::function<void()> callback);
 private:
 	std::function<void()> m_callback_onSortingButtonClick;
+	std::function<void()> m_callback_onPathFindingButtonClick;
 };
 
 #endif
