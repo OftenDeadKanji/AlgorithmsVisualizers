@@ -7,17 +7,27 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(SOURCES
     "src/main.cpp"
-    "src/application.cpp" 
-    "src/application.hpp"
-    
-    "src/MVC/model.cpp" 
-    "src/MVC/model.hpp" 
 
+    "src/Application/application.cpp" 
+    "src/Application/application.hpp"
+     
+    "src/MVC/model.hpp" 
     "src/MVC/view.cpp"
     "src/MVC/view.hpp"
-
     "src/MVC/controller.cpp"
     "src/MVC/controller.hpp"
+
+    "src/MVC/Menu/menuModel.hpp" 
+    "src/MVC/Menu/menuView.cpp" 
+    "src/MVC/Menu/menuView.hpp" 
+    "src/MVC/Menu/menuController.cpp"
+    "src/MVC/Menu/menuController.hpp"
+
+    "src/MVC/Sorting/sortingModel.hpp" 
+    "src/MVC/Sorting/sortingView.cpp" 
+    "src/MVC/Sorting/sortingView.hpp" 
+    "src/MVC/Sorting/sortingController.cpp"
+    "src/MVC/Sorting/sortingController.hpp"
 
     "src/Utils/Timer/timer.cpp"
 )

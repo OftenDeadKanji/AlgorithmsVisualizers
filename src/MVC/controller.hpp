@@ -1,3 +1,6 @@
+#ifndef __CONTROLLER_HPP__
+#define __CONTROLLER_HPP__
+#include "../Application/applicationState.hpp"
 
 class View;
 class Model;
@@ -5,12 +8,22 @@ class Model;
 class Controller
 {
 public:
-	Controller(Model& model, View& view);
+	//Controller(Model& model, View& view);
 
 	bool shouldApplicationRun() const;
-private:
-	Model& m_model;
-	View& m_view;
+
+	bool shouldChangeState() const;
+	ApplicationState getNextState() const;
+protected:
+	Controller(Model& model, View& view, ApplicationState currentState);
+
+	Model& m_baseModel;
+	View& m_baseView;
 
 	bool m_shouldApplicationRun = true;
+
+	ApplicationState m_currentState;
+	ApplicationState m_nextState;
 };
+
+#endif

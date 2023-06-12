@@ -6,23 +6,21 @@
 class View
 {
 public:
-	View();
-	~View();
+	View(sf::RenderWindow& window);
+	virtual ~View() = default;
 
 	void checkEventsAndRender(float deltaTime);
 
 	void setWindowCloseCallback(std::function<void()>);
-private:
+protected:
 	void checkSFMLEvents();
 	void updateImGuiUI(float deltaTime);
-	void renderSceneToTexture();
 	void render();
+	virtual void renderSceneToTexture() = 0;
+	virtual void updateImGuiUIOptionsWindow() = 0;
+	void display();
 
-	// RenderWindow and RenderTexture
-	static constexpr sf::Vector2u DEFAULT_WINDOW_SIZE { 1600, 900 };
-	const sf::String DEFAULT_WINDOW_TITLE { L"Algorithms Visualizer - Mateusz Ch³opek 2023" };
-	sf::RenderWindow m_window;
-
+	sf::RenderWindow& m_window;
 	sf::RenderTexture m_renderTexture;
 	bool m_resizeTexture = false;
 	sf::Vector2u m_newTextureSize;

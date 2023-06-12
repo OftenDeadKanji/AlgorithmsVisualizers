@@ -1,12 +1,4 @@
-
-#include <SFML/Graphics.hpp>
-#include <SFML/Graphics/CircleShape.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/System/Clock.hpp>
-#include <SFML/Window/Event.hpp>
-
-#include <iostream>
-#include "application.hpp"
+#include "Application/application.hpp"
 
 
 int main() 

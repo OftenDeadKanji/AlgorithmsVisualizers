@@ -2,31 +2,21 @@
 #include <ImGUI/imgui.h>
 #include <ImGUI/imgui-SFML.h>
 
-View::View()
+View::View(sf::RenderWindow& window)
+	: m_window(window)
 {
-	m_window.create(sf::VideoMode(this->DEFAULT_WINDOW_SIZE), this->DEFAULT_WINDOW_TITLE);
-	m_renderTexture.create(this->DEFAULT_WINDOW_SIZE);
-
-	ImGui::SFML::Init(m_window);
-	ImGuiIO& io = ImGui::GetIO(); (void)io;
-	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard | ImGuiConfigFlags_DockingEnable;
-}
-
-View::~View()
-{
-	ImGui::SFML::Shutdown();
-	m_window.close();
+	m_renderTexture.create(window.getSize());
 }
 
 void View::checkEventsAndRender(float deltaTime)
 {
 	checkSFMLEvents();
 	
-	renderSceneToTexture();
+	render();
 
 	updateImGuiUI(deltaTime);
 	
-	render();
+	display();
 }
 
 void View::setWindowCloseCallback(std::function<void()> callback)
@@ -72,14 +62,14 @@ void View::updateImGuiUI(float deltaTime)
 	}
 	ImGui::End();
 
-	ImGui::Begin("Hello, world!", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
+	ImGui::Begin("Hello, world!", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize );
 	{
-		ImGui::LabelText("Delta Time", "Delta Time: %.3fms", deltaTime * 1000.0f);
+		updateImGuiUIOptionsWindow();
 	}
 	ImGui::End();
 }
 
-void View::renderSceneToTexture()
+void View::render()
 {
 	if (m_resizeTexture)
 	{
@@ -87,10 +77,10 @@ void View::renderSceneToTexture()
 	}
 
 	m_renderTexture.clear();
-
+	renderSceneToTexture();
 }
 
-void View::render()
+void View::display()
 {
 	m_window.clear();
 
