@@ -2,11 +2,12 @@
 #define __VIEW_HPP__
 #include "SFML/Graphics.hpp"
 #include <functional>
+#include "../Model/model.hpp"
 
 class View
 {
 public:
-	View(sf::RenderWindow& window);
+	View(const Model& model, sf::RenderWindow& window);
 	virtual ~View() = default;
 
 	void checkEventsAndRender(float deltaTime);
@@ -19,6 +20,8 @@ protected:
 	virtual void renderSceneToTexture() = 0;
 	virtual void updateImGuiUIOptionsWindow() = 0;
 	void display();
+
+	const Model& m_baseModel;
 
 	sf::RenderWindow& m_window;
 	sf::RenderTexture m_renderTexture;

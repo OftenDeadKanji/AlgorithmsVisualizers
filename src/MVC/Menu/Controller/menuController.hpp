@@ -1,9 +1,9 @@
 #ifndef __MENU_CONTROLLER_HPP__
 #define __MENU_CONTROLLER_HPP__
 
-#include "../controller.hpp"
-#include "menuModel.hpp"
-#include "menuView.hpp"
+#include "../../Base/Controller/controller.hpp"
+#include "../Model/menuModel.hpp"
+#include "../View/menuView.hpp"
 
 class MenuController
 	: public Controller

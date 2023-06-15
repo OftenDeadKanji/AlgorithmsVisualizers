@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(PathFinding)
+project(AlgorithmVisualizer)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
@@ -11,38 +11,38 @@ set(SOURCES
     "src/Application/application.cpp" 
     "src/Application/application.hpp"
      
-    "src/MVC/model.hpp" 
-    "src/MVC/view.cpp"
-    "src/MVC/view.hpp"
-    "src/MVC/controller.cpp"
-    "src/MVC/controller.hpp"
+    "src/MVC/Base/Model/model.hpp" 
+    "src/MVC/Base/View/view.cpp"
+    "src/MVC/Base/View/view.hpp"
+    "src/MVC/Base/Controller/controller.cpp"
+    "src/MVC/Base/Controller/controller.hpp"
 
-    "src/MVC/Menu/menuModel.hpp" 
-    "src/MVC/Menu/menuView.cpp" 
-    "src/MVC/Menu/menuView.hpp" 
-    "src/MVC/Menu/menuController.cpp"
-    "src/MVC/Menu/menuController.hpp"
+    "src/MVC/Menu/Model/menuModel.hpp" 
+    "src/MVC/Menu/View/menuView.cpp" 
+    "src/MVC/Menu/View/menuView.hpp" 
+    "src/MVC/Menu/Controller/menuController.cpp"
+    "src/MVC/Menu/Controller/menuController.hpp"
 
-    "src/MVC/Sorting/sortingModel.hpp" 
-    "src/MVC/Sorting/sortingView.cpp" 
-    "src/MVC/Sorting/sortingView.hpp" 
-    "src/MVC/Sorting/sortingController.cpp"
-    "src/MVC/Sorting/sortingController.hpp"
+    "src/MVC/Sorting/Model/sortingModel.hpp" 
+    "src/MVC/Sorting/View/sortingView.cpp" 
+    "src/MVC/Sorting/View/sortingView.hpp" 
+    "src/MVC/Sorting/Controller/sortingController.cpp"
+    "src/MVC/Sorting/Controller/sortingController.hpp"
 
-    "src/MVC/PathFinding/pathFindingModel.hpp" 
-    "src/MVC/PathFinding/pathFindingView.cpp" 
-    "src/MVC/PathFinding/pathFindingView.hpp" 
-    "src/MVC/PathFinding/pathFindingController.cpp"
-    "src/MVC/PathFinding/pathFindingController.hpp"
+    "src/MVC/PathFinding/Model/pathFindingModel.hpp" 
+    "src/MVC/PathFinding/View/pathFindingView.cpp" 
+    "src/MVC/PathFinding/View/pathFindingView.hpp" 
+    "src/MVC/PathFinding/Controller/pathFindingController.cpp"
+    "src/MVC/PathFinding/Controller/pathFindingController.hpp"
 
     "src/Utils/Timer/timer.cpp"
 )
 
-add_executable(PathFinding ${SOURCES})
+add_executable(AlgorithmVisualizer ${SOURCES})
 
-set_target_properties(PathFinding PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+set_target_properties(AlgorithmVisualizer PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
-target_include_directories(PathFinding PRIVATE "dependencies/include/")
+target_include_directories(AlgorithmVisualizer PRIVATE "dependencies/include/")
 
 set(SFML_SUFFIX "")
 
@@ -106,4 +106,4 @@ endforeach()
 
 add_subdirectory("dependencies/src/ImGUI/")
 
-target_link_libraries(PathFinding PUBLIC ImGui ${LIBS})
+target_link_libraries(AlgorithmVisualizer PUBLIC ImGui ${LIBS})

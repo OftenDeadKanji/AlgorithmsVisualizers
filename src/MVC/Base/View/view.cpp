@@ -2,8 +2,8 @@
 #include <ImGUI/imgui.h>
 #include <ImGUI/imgui-SFML.h>
 
-View::View(sf::RenderWindow& window)
-	: m_window(window)
+View::View(const Model& model, sf::RenderWindow& window)
+	: m_baseModel(model), m_window(window)
 {
 	m_renderTexture.create(window.getSize());
 }

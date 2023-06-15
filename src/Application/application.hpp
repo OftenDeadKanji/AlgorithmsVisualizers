@@ -2,9 +2,9 @@
 #define __APPLICATION_HPP__
 #include <memory>
 
-#include "../MVC/model.hpp"
-#include "../MVC/view.hpp"
-#include "../MVC/controller.hpp"
+#include "../MVC/Base/Model/model.hpp"
+#include "../MVC/Base/View/view.hpp"
+#include "../MVC/Base/Controller/controller.hpp"
 
 #include "applicationState.hpp"
 

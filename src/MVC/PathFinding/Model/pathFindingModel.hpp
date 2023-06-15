@@ -1,7 +1,7 @@
 #ifndef __PATHFINDING_MODEL_HPP__
 #define __PATHFINDING_MODEL_HPP__
 
-#include "../model.hpp"
+#include "../../Base/Model/model.hpp"
 
 class PathFindingModel
 	: public Model

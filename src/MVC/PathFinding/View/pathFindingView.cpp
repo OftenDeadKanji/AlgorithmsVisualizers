@@ -1,8 +1,8 @@
 #include "pathFindingView.hpp"
 #include <ImGUI/imgui.h>
 
-PathFindingView::PathFindingView(sf::RenderWindow& window)
-	: View(window)
+PathFindingView::PathFindingView(const PathFindingModel& model, sf::RenderWindow& window)
+	: View(model, window)
 {
 }
 

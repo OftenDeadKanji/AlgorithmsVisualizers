@@ -1,7 +1,7 @@
 #ifndef __SORTING_MODEL_HPP__
 #define __SORTING_MODEL_HPP__
 
-#include "../model.hpp"
+#include "../../Base/Model/model.hpp"
 
 class SortingModel
 	: public Model

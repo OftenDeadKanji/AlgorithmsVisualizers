@@ -1,6 +1,6 @@
 #include "controller.hpp"
-#include "model.hpp"
-#include "view.hpp"
+#include "../Model/model.hpp"
+#include "../View/view.hpp"
 
 bool Controller::shouldApplicationRun() const
 {

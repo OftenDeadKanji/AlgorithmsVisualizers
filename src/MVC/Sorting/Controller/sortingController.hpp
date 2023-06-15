@@ -1,9 +1,9 @@
 #ifndef __SORTING_CONTROLLER_HPP__
 #define __SORTING_CONTROLLER_HPP__
 
-#include "../controller.hpp"
-#include "sortingModel.hpp"
-#include "sortingView.hpp"
+#include "../../Base/Controller/controller.hpp"
+#include "../Model/sortingModel.hpp"
+#include "../View/sortingView.hpp"
 
 class SortingController
 	: public Controller

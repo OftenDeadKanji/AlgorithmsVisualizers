@@ -1,9 +1,9 @@
 #ifndef __PATHFINDING_CONTROLLER_HPP__
 #define __PATHFINDING_CONTROLLER_HPP__
 
-#include "../controller.hpp"
-#include "pathFindingModel.hpp"
-#include "pathFindingView.hpp"
+#include "../../Base/Controller/controller.hpp"
+#include "../Model/pathFindingModel.hpp"
+#include "../View/pathFindingView.hpp"
 
 class PathFindingController
 	: public Controller

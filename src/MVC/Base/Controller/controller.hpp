@@ -1,6 +1,6 @@
 #ifndef __CONTROLLER_HPP__
 #define __CONTROLLER_HPP__
-#include "../Application/applicationState.hpp"
+#include "../../../Application/applicationState.hpp"
 
 class View;
 class Model;
@@ -8,8 +8,6 @@ class Model;
 class Controller
 {
 public:
-	//Controller(Model& model, View& view);
-
 	bool shouldApplicationRun() const;
 
 	bool shouldChangeState() const;

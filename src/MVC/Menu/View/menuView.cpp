@@ -1,8 +1,8 @@
 #include "menuView.hpp"
 #include <ImGUI/imgui.h>
 
-MenuView::MenuView(sf::RenderWindow& window)
-	: View(window)
+MenuView::MenuView(const MenuModel& model, sf::RenderWindow& window)
+	: View(model, window)
 {
 }
 
