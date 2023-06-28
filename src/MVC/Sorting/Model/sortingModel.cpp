@@ -52,7 +52,7 @@ std::vector<SortingAlgorithm> SortingModel::getAllAvailableSortingAlgorithms()
 
 void SortingModel::setSortingAlgorithm(SortingAlgorithm algorithm)
 {
-	if (m_sorter && m_sorter->getAlgorithmName() != algorithm)
+	if (m_sorter)
 	{
 		m_sorter->stop();
 		m_sorter->waitToFinishWorking();
