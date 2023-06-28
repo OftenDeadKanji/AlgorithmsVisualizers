@@ -2,19 +2,25 @@
 #define __SORTING_VIEW_HPP__
 
 #include "../../Base/View/view.hpp"
-#include "../Model/sortingModel.hpp"
+#include "algorithmSelector.hpp"
 
 class SortingView
 	: public View
 {
 public:
-	SortingView(const SortingModel& model, sf::RenderWindow& window);
+	SortingView(sf::RenderWindow& window);
 
 	void renderSceneToTexture() override;
 	void updateImGuiUIOptionsWindow() override;
 
+	void setAlgorithmComboListSelectCallback(std::function<void(SortingAlgorithm)> callback);
+
 private:
-	const SortingModel& m_model = static_cast<const SortingModel&>(m_baseModel);
+    const SortingModel& m_model = static_cast<const SortingModel&>(m_baseModel);
+
+	AlgorithmSelector m_algorithmSelector;
 };
 
 #endif
+
+	

@@ -23,19 +23,29 @@ set(SOURCES
     "src/MVC/Menu/Controller/menuController.cpp"
     "src/MVC/Menu/Controller/menuController.hpp"
 
+    "src/MVC/Sorting/Model/sortingModel.cpp" 
     "src/MVC/Sorting/Model/sortingModel.hpp" 
     "src/MVC/Sorting/View/sortingView.cpp" 
     "src/MVC/Sorting/View/sortingView.hpp" 
+    "src/MVC/Sorting/View/algorithmSelector.cpp"
+    "src/MVC/Sorting/View/algorithmSelector.hpp"
     "src/MVC/Sorting/Controller/sortingController.cpp"
     "src/MVC/Sorting/Controller/sortingController.hpp"
+
+    "src/Sorting/Sorters/sorter.hpp"
+    "src/Sorting/Sorters/sorter.cpp"
 
     "src/MVC/PathFinding/Model/pathFindingModel.hpp" 
     "src/MVC/PathFinding/View/pathFindingView.cpp" 
     "src/MVC/PathFinding/View/pathFindingView.hpp" 
     "src/MVC/PathFinding/Controller/pathFindingController.cpp"
     "src/MVC/PathFinding/Controller/pathFindingController.hpp"
+    
 
     "src/Utils/Timer/timer.cpp"
+    "src/Utils/Random/random.cpp"
+    "src/Utils/Random/random.hpp"
+
 )
 
 add_executable(AlgorithmVisualizer ${SOURCES})
