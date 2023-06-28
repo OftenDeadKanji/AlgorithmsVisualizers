@@ -40,17 +40,19 @@ set(SOURCES
     "src/Sorting/Sorters/sorter.cpp"
     "src/Sorting/Sorters/bubbleSorter.cpp"
     "src/Sorting/Sorters/bubbleSorter.hpp"
+    "src/Sorting/Sorters/insertionSorter.cpp"
+    "src/Sorting/Sorters/insertionSorter.hpp"
 
     "src/MVC/PathFinding/Model/pathFindingModel.hpp" 
     "src/MVC/PathFinding/View/pathFindingView.cpp" 
     "src/MVC/PathFinding/View/pathFindingView.hpp" 
     "src/MVC/PathFinding/Controller/pathFindingController.cpp"
     "src/MVC/PathFinding/Controller/pathFindingController.hpp"
-    
 
     "src/Utils/Timer/timer.cpp"
     "src/Utils/Random/random.cpp"
     "src/Utils/Random/random.hpp"
+
 )
 
 add_executable(AlgorithmVisualizer ${SOURCES})

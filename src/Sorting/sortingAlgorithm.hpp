@@ -6,7 +6,8 @@ enum class SortingAlgorithm
 {
 	None,
 
-	Bubble
+	Bubble,
+	Insertion
 };
 
 constexpr std::string SortingAlgorithmToString(SortingAlgorithm algorithm)
@@ -15,6 +16,8 @@ constexpr std::string SortingAlgorithmToString(SortingAlgorithm algorithm)
 	{
 	case SortingAlgorithm::Bubble:
 		return "Bubble";
+	case SortingAlgorithm::Insertion:
+		return "Insertion";
 	default:
 		return "";
 	}

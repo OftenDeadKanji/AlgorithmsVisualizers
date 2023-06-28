@@ -1,5 +1,6 @@
 #include "sortingModel.hpp"
 #include "../../../Sorting/Sorters/bubbleSorter.hpp"
+#include "../../../Sorting/Sorters/insertionSorter.hpp"
 #include <numeric>
 
 SortingModel::SortingModel()
@@ -43,7 +44,10 @@ void SortingModel::resumeSorting()
 
 std::vector<SortingAlgorithm> SortingModel::getAllAvailableSortingAlgorithms()
 {
-	return { SortingAlgorithm::Bubble };
+	return { 
+		SortingAlgorithm::Bubble,
+		SortingAlgorithm::Insertion
+	};
 }
 
 void SortingModel::setSortingAlgorithm(SortingAlgorithm algorithm)
@@ -58,6 +62,9 @@ void SortingModel::setSortingAlgorithm(SortingAlgorithm algorithm)
 	{
 	case SortingAlgorithm::Bubble:
 		m_sorter = std::make_unique<BubbleSorter>();
+		break;
+	case SortingAlgorithm::Insertion:
+		m_sorter = std::make_unique<InsertionSorter>();
 		break;
 	}
 }
@@ -89,10 +96,6 @@ float SortingModel::getDelay() const
 void SortingModel::setArraySize(int size)
 {
 	m_arraySize = size;
-	//if (m_sorter)
-	//{
-	//	m_sorter->setArraySize(size);
-	//}
 }
 
 void SortingModel::getArrayCopy(std::vector<int>& sortingArray) const
