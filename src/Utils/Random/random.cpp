@@ -4,7 +4,7 @@ std::unique_ptr<Random> Random::s_instance(new Random());
 
 Random* Random::getInstancePtr()
 {
-	return nullptr;
+	return s_instance.get();
 }
 
 float Random::getRandomFloat(float min, float max)

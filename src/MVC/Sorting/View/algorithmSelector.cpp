@@ -12,10 +12,12 @@ void AlgorithmSelector::setAvailableAlgorithms(const std::vector<SortingAlgorith
 	}
 }
 
-void AlgorithmSelector::updateAndDisplayComboList()
+void AlgorithmSelector::updateAndDisplaySelector()
 {
+	ImGui::Text("Choose algorithm:");
+
 	const char* firstOption = m_availableAlgorithmsNames.empty() ? "No option available" : m_availableAlgorithmsNames[0].c_str();
-	if (ImGui::BeginCombo("AlgorithmsComboList", firstOption))
+	if (ImGui::BeginCombo("##AlgorithmsComboList", m_availableAlgorithmsNames[0].c_str()))
 	{
 		for (int i = 0; i < m_availableAlgorithmsNames.size(); i++)
 		{

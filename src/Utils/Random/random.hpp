@@ -2,6 +2,7 @@
 #define __RANDOM_HPP__
 #include <random>
 #include <memory>
+#include <algorithm>
 
 class Random
 {
@@ -12,6 +13,9 @@ public:
 	static Random* getInstancePtr();
 
 	float getRandomFloat(float min, float max);
+
+	template<typename T>
+	void shuffle(std::vector<T>& v);
 private:
 	Random();
 
@@ -22,3 +26,9 @@ private:
 };
 
 #endif
+
+template<typename T>
+inline void Random::shuffle(std::vector<T>& v)
+{
+	std::shuffle(v.begin(), v.end(), m_randomEngine);
+}

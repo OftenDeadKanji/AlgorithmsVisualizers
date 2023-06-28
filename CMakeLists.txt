@@ -29,11 +29,17 @@ set(SOURCES
     "src/MVC/Sorting/View/sortingView.hpp" 
     "src/MVC/Sorting/View/algorithmSelector.cpp"
     "src/MVC/Sorting/View/algorithmSelector.hpp"
+    "src/MVC/Sorting/View/arraySizeSelector.cpp"
+    "src/MVC/Sorting/View/arraySizeSelector.hpp"
+    "src/MVC/Sorting/View/delaySelector.cpp"
+    "src/MVC/Sorting/View/delaySelector.hpp"
     "src/MVC/Sorting/Controller/sortingController.cpp"
     "src/MVC/Sorting/Controller/sortingController.hpp"
 
     "src/Sorting/Sorters/sorter.hpp"
     "src/Sorting/Sorters/sorter.cpp"
+    "src/Sorting/Sorters/bubbleSorter.cpp"
+    "src/Sorting/Sorters/bubbleSorter.hpp"
 
     "src/MVC/PathFinding/Model/pathFindingModel.hpp" 
     "src/MVC/PathFinding/View/pathFindingView.cpp" 
@@ -45,7 +51,6 @@ set(SOURCES
     "src/Utils/Timer/timer.cpp"
     "src/Utils/Random/random.cpp"
     "src/Utils/Random/random.hpp"
-
 )
 
 add_executable(AlgorithmVisualizer ${SOURCES})

@@ -9,7 +9,7 @@ class AlgorithmSelector
 {
 public:
 	void setAvailableAlgorithms(const std::vector<SortingAlgorithm>& algorithms);
-	void updateAndDisplayComboList();
+	void updateAndDisplaySelector();
 	void setAlgorithmComboListSelectCallback(std::function<void(SortingAlgorithm)> callback);
 private:
 	std::vector<SortingAlgorithm> m_availableAlgorithms;

@@ -4,6 +4,8 @@
 
 enum class SortingAlgorithm
 {
+	None,
+
 	Bubble
 };
 
