@@ -1,6 +1,7 @@
 #include "sortingModel.hpp"
 #include "../../../Sorting/Sorters/bubbleSorter.hpp"
 #include "../../../Sorting/Sorters/insertionSorter.hpp"
+#include "../../../Sorting/Sorters/quickSorter.hpp"
 #include <numeric>
 
 SortingModel::SortingModel()
@@ -46,7 +47,8 @@ std::vector<SortingAlgorithm> SortingModel::getAllAvailableSortingAlgorithms()
 {
 	return { 
 		SortingAlgorithm::Bubble,
-		SortingAlgorithm::Insertion
+		SortingAlgorithm::Insertion,
+		SortingAlgorithm::Quick
 	};
 }
 
@@ -65,6 +67,9 @@ void SortingModel::setSortingAlgorithm(SortingAlgorithm algorithm)
 		break;
 	case SortingAlgorithm::Insertion:
 		m_sorter = std::make_unique<InsertionSorter>();
+		break;
+	case SortingAlgorithm::Quick:
+		m_sorter = std::make_unique<QuickSorter>();
 		break;
 	}
 }

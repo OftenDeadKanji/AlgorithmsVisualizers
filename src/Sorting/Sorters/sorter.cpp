@@ -104,6 +104,13 @@ Sorter::Sorter(SortingAlgorithm algorithmName)
 	: m_algorithmName(algorithmName)
 {}
 
+void Sorter::swap(int i0, int i1)
+{
+	m_arrayMutex.lock();
+	std::swap(m_array[i0], m_array[i1]);
+	m_arrayMutex.unlock();
+}
+
 bool Sorter::isArraySorted() const
 {
 	for (int i = 0; i < m_array.size() - 1; i++)

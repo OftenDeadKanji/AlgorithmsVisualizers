@@ -31,6 +31,8 @@ public:
 protected:
 	Sorter(SortingAlgorithm algorithmName);
 
+	void swap(int i0, int i1);
+
 	bool isArraySorted() const;
 	void applyDelay(float currentIterationTime);
 
