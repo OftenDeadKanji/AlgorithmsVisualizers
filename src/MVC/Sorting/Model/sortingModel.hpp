@@ -30,6 +30,7 @@ public:
 	void setArraySize(int size);
 
 	void getArrayCopy(std::vector<int>& sortingArray) const;
+	const std::vector<int>& getArray() const;
 	static constexpr int MAX_ARRAY_SIZE = 100000;
 	static constexpr int DEFAULT_ARRAY_SIZE = 500;
 

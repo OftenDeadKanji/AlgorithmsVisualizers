@@ -106,6 +106,11 @@ void SortingModel::getArrayCopy(std::vector<int>& sortingArray) const
 	}
 }
 
+const std::vector<int>& SortingModel::getArray() const
+{
+	return m_sorter->getArray();
+}
+
 int SortingModel::getIndex() const
 {
 	return m_sorter->getIndex();

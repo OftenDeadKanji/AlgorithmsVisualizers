@@ -24,6 +24,7 @@ public:
 	void waitToFinishWorking();
 
 	void getArrayCopy(std::vector<int>& outCopy);
+	const std::vector<int>& getArray() const;
 	virtual int getIndex() const = 0;
 
 	SortingAlgorithm getAlgorithmName() const;

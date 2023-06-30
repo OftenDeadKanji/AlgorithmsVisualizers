@@ -1,5 +1,6 @@
 #include "sorter.hpp"
 #include "../../Utils/Random/random.hpp"
+#include <fstream>
 
 void Sorter::start()
 {
@@ -89,6 +90,11 @@ void Sorter::getArrayCopy(std::vector<int>& outCopy)
 	m_arrayMutex.unlock();
 }
 
+const std::vector<int>& Sorter::getArray() const
+{
+	return m_array;
+}
+
 SortingAlgorithm Sorter::getAlgorithmName() const
 {
 	return m_algorithmName;
@@ -110,13 +116,27 @@ bool Sorter::isArraySorted() const
 
 	return true;
 }
+std::ofstream file("file.txt", std::ios::out | std::ios::trunc);
 
 void Sorter::applyDelay(float currentIterationTime)
 {
-	float leftTime = m_latency - currentIterationTime;
+	float leftTime = m_latency.load() - currentIterationTime;
 	if (leftTime > 0.0f)
 	{
-		std::chrono::nanoseconds delay(static_cast<long long>(leftTime * 1'000'000'000)); //sec to ns
+		std::chrono::nanoseconds delay(static_cast<long long>(leftTime * 1'000'000'000.0f)); //sec to ns
+
+
+
+
+
+
+		//auto start = std::chrono::high_resolution_clock::now();
+
 		std::this_thread::sleep_for(delay);
+
+		//auto end = std::chrono::high_resolution_clock::now();
+		//
+		//std::chrono::duration<float> time = end - start;
+		//file << "Mialo byc: " << leftTime << "czyli tyle nano: " << delay.count() << ", a bylo: " << time.count() << '\n';
 	}
 }

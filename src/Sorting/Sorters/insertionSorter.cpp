@@ -37,7 +37,12 @@ void InsertionSorter::sort()
 			}
 
 			while (!m_continueSorting.load());
-			applyDelay(timer.getTimeInSeconds());
+			
+			while (timer.getTimeInSeconds() < m_latency)
+			{
+				std::this_thread::yield();
+			}
+
 			timer.reset();
 		}
 

@@ -11,8 +11,8 @@ SortingView::SortingView(const SortingModel& model, sf::RenderWindow& window)
 
 void SortingView::renderSceneToTexture()
 {
-	std::vector<int> modelArray;
-	m_model.getArrayCopy(modelArray);
+	const std::vector<int>& modelArray = m_model.getArray();
+	//m_model.getArrayCopy(modelArray);
 
 	if (!modelArray.empty())
 	{

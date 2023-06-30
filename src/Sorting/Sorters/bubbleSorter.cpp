@@ -11,6 +11,7 @@ void BubbleSorter::sort()
 	Timer timer;
 	timer.reset();
 
+
 	while (true)
 	{
 
@@ -31,7 +32,12 @@ void BubbleSorter::sort()
 			}
 
 			while (!m_continueSorting.load());
-			applyDelay(timer.getTimeInSeconds());
+			
+			while (timer.getTimeInSeconds() < m_latency)
+			{
+				std::this_thread::yield();
+			}
+			
 			timer.reset();
 
 		}

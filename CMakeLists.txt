@@ -52,7 +52,7 @@ set(SOURCES
     "src/Utils/Timer/timer.cpp"
     "src/Utils/Random/random.cpp"
     "src/Utils/Random/random.hpp"
-
+    
 )
 
 add_executable(AlgorithmVisualizer ${SOURCES})
