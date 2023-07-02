@@ -75,6 +75,8 @@ bool Sorter::isSorting() const
 
 void Sorter::waitToFinishWorking()
 {
+	m_continueSorting = true;
+
 	if (m_sortingThread.joinable())
 	{
 		m_sortingThread.join();
