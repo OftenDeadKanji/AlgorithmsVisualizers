@@ -55,7 +55,7 @@ set(SOURCES
     "src/Utils/Random/random.cpp"
     "src/Utils/Random/random.hpp"
     
-)
+ "src/Sorting/Sorters/heapSorter.cpp")
 
 add_executable(AlgorithmVisualizer ${SOURCES})
 

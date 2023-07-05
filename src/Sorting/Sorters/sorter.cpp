@@ -59,7 +59,7 @@ void Sorter::setArraySize(int size)
 	int elementsToAddCount = size - currentSize;
 	for (int i = 0; i < elementsToAddCount; i++)
 	{
-		m_array.push_back(random->getRandomFloat(0, size));
+		m_array.push_back(random->getRandomFloat(1, size));
 	}
 }
 

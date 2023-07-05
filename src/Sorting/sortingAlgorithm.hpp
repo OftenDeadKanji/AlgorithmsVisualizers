@@ -8,7 +8,8 @@ enum class SortingAlgorithm
 
 	Bubble,
 	Insertion,
-	Quick
+	Quick,
+	Heap
 };
 
 constexpr std::string SortingAlgorithmToString(SortingAlgorithm algorithm)
@@ -21,6 +22,8 @@ constexpr std::string SortingAlgorithmToString(SortingAlgorithm algorithm)
 		return "Insertion";
 	case SortingAlgorithm::Quick:
 		return "Quick";
+	case SortingAlgorithm::Heap:
+		return "Heap";
 	default:
 		return "";
 	}
