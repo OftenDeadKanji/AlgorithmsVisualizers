@@ -23,11 +23,27 @@ set(SOURCES
     "src/MVC/Menu/Controller/menuController.cpp"
     "src/MVC/Menu/Controller/menuController.hpp"
 
+    "src/MVC/Sorting/Model/sortingModel.cpp" 
     "src/MVC/Sorting/Model/sortingModel.hpp" 
     "src/MVC/Sorting/View/sortingView.cpp" 
     "src/MVC/Sorting/View/sortingView.hpp" 
+    "src/MVC/Sorting/View/algorithmSelector.cpp"
+    "src/MVC/Sorting/View/algorithmSelector.hpp"
+    "src/MVC/Sorting/View/arraySizeSelector.cpp"
+    "src/MVC/Sorting/View/arraySizeSelector.hpp"
+    "src/MVC/Sorting/View/delaySelector.cpp"
+    "src/MVC/Sorting/View/delaySelector.hpp"
     "src/MVC/Sorting/Controller/sortingController.cpp"
     "src/MVC/Sorting/Controller/sortingController.hpp"
+
+    "src/Sorting/Sorters/sorter.hpp"
+    "src/Sorting/Sorters/sorter.cpp"
+    "src/Sorting/Sorters/bubbleSorter.cpp"
+    "src/Sorting/Sorters/bubbleSorter.hpp"
+    "src/Sorting/Sorters/insertionSorter.cpp"
+    "src/Sorting/Sorters/insertionSorter.hpp"
+    "src/Sorting/Sorters/quickSorter.cpp"
+    "src/Sorting/Sorters/quickSorter.hpp"
 
     "src/MVC/PathFinding/Model/pathFindingModel.hpp" 
     "src/MVC/PathFinding/View/pathFindingView.cpp" 
@@ -36,7 +52,10 @@ set(SOURCES
     "src/MVC/PathFinding/Controller/pathFindingController.hpp"
 
     "src/Utils/Timer/timer.cpp"
-)
+    "src/Utils/Random/random.cpp"
+    "src/Utils/Random/random.hpp"
+    
+ "src/Sorting/Sorters/heapSorter.cpp")
 
 add_executable(AlgorithmVisualizer ${SOURCES})
 
@@ -69,13 +88,13 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     string(APPEND SFML_SUFFIX "-d")
 
     add_compile_definitions("_DEBUG")
-elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
+elseif(CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
     message("Release configuration detected")
 
     set(CONFIGURATION_NAME "RelWithDebInfo")
 
     add_compile_definitions("_RELEASE")
-elseif(CMAKE_BUILD_TYPE STREQUAL "Dist")
+elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
     message("Dist configuration detected")
 
     set(CONFIGURATION_NAME "Release")
