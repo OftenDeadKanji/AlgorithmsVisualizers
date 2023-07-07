@@ -14,6 +14,7 @@ set(SOURCES
     "src/MVC/Base/Model/model.hpp" 
     "src/MVC/Base/View/view.cpp"
     "src/MVC/Base/View/view.hpp"
+    "src/MVC/Base/View/algorithmSelector.hpp"
     "src/MVC/Base/Controller/controller.cpp"
     "src/MVC/Base/Controller/controller.hpp"
 
@@ -27,8 +28,6 @@ set(SOURCES
     "src/MVC/Sorting/Model/sortingModel.hpp" 
     "src/MVC/Sorting/View/sortingView.cpp" 
     "src/MVC/Sorting/View/sortingView.hpp" 
-    "src/MVC/Sorting/View/algorithmSelector.cpp"
-    "src/MVC/Sorting/View/algorithmSelector.hpp"
     "src/MVC/Sorting/View/arraySizeSelector.cpp"
     "src/MVC/Sorting/View/arraySizeSelector.hpp"
     "src/MVC/Sorting/View/delaySelector.cpp"
