@@ -3,7 +3,7 @@
 
 #include "../../Base/View/view.hpp"
 #include "../Model/sortingModel.hpp"
-#include "algorithmSelector.hpp"
+#include "../../Base/View/algorithmSelector.hpp"
 #include "arraySizeSelector.hpp"
 #include "delaySelector.hpp"
 
@@ -29,7 +29,7 @@ public:
 private:
     const SortingModel& m_model = static_cast<const SortingModel&>(m_baseModel);
 
-	AlgorithmSelector m_algorithmSelector;
+	AlgorithmSelector<SortingAlgorithm> m_algorithmSelector;
 	ArraySizeSelector m_arraySizeSelector;
 	DelaySelector m_delaySelector;
 	std::function<void()> m_callback_onSortStartButtonClick;
