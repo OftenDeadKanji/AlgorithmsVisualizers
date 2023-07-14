@@ -1,11 +1,15 @@
 #include "pathFinder.hpp"
+#include "../board.hpp"
 
-void PathFinder::setStart(std::pair<int, int> start)
+void PathFinder::start(Board& board)
 {
-	m_start = std::move(start);
-}
+	m_finishedFinding = false;
+	m_isFinding = true;
 
-void PathFinder::setEnd(std::pair<int, int> end)
-{
-	m_end = std::move(end);
+	if (m_findingThread.joinable())
+	{
+		m_findingThread.join();
+	}
+
+	m_findingThread = std::thread(&PathFinder::findPath, this, std::ref(board));
 }

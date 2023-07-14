@@ -5,12 +5,16 @@
 enum class PathFindingAlgorithm
 {
 	None,
+
+	Dijkstra
 };
 
 constexpr std::string PathFindingAlgorithmToString(PathFindingAlgorithm algorithm)
 {
 	switch (algorithm)
 	{
+	case PathFindingAlgorithm::Dijkstra:
+		return "Dijkstra";
 	default:
 		return "";
 	}

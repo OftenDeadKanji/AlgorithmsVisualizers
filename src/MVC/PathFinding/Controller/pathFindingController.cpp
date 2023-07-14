@@ -12,4 +12,28 @@ PathFindingController::PathFindingController(PathFindingModel& model, PathFindin
 		{
 			model.setBoardSize(size);
 		});
+
+	m_view.setStartCellAddCallback([&](std::pair<int, int> position)
+		{
+			model.setStartCell(position);
+		});
+	m_view.setEndCellAddCallback([&](std::pair<int, int> position)
+		{
+			model.setEndCell(position);
+		});
+	m_view.setNormalCellAddCallback([&](std::pair<int, int> position)
+		{
+			model.setNormalCell(position);
+		});
+	m_view.setObstacleCellAddCallback([&](std::pair<int, int> position)
+		{
+			model.setObstacleCell(position);
+		});
+
+	m_view.setStartButtonCallback([&]()
+		{
+			model.start();
+		});
+
+	m_view.setDisplayedBoardSize(PathFindingModel::DEFAULT_BOARD_SIZE);
 }
