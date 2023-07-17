@@ -29,7 +29,7 @@ void DijkstraFinder::findPath(Board& board)
 	previous.resize(boardSize.first);
 
 	auto start = board.getStartPosition();
-	auto end = board.getEndtPosition();
+	auto end = board.getEndPosition();
 	int startFlat = board.getStartFlatPosition();
 	for (int i = 0; i < boardSize.first; i++)
 	{

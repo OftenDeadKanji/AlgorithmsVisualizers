@@ -52,7 +52,7 @@ public:
 	void setEndCell(int x, int y);
 	bool isEndCell(const std::pair<int, int>& position) const;
 	bool isEndCell(int x, int y) const;
-	std::pair<int, int> getEndtPosition() const;
+	std::pair<int, int> getEndPosition() const;
 	int getEndFlatPosition() const;
 
 	void setVisitedCell(const std::pair<int, int>& position);

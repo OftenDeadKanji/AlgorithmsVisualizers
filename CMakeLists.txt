@@ -59,6 +59,8 @@ set(SOURCES
     "src/PathFinding/PathFinders/pathFinder.hpp"
     "src/PathFinding/PathFinders/dijkstraPathFinder.cpp"
     "src/PathFinding/PathFinders/dijkstraPathFinder.hpp"
+    "src/PathFinding/PathFinders/AStarPathFinder.cpp"
+    "src/PathFinding/PathFinders/AStarPathFinder.hpp"
 
     "src/Utils/Timer/timer.cpp"
     "src/Utils/Random/random.cpp"

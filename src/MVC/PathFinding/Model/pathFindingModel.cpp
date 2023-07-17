@@ -1,5 +1,6 @@
 #include "pathFindingModel.hpp"
 #include "../../../PathFinding/PathFinders/dijkstraPathFinder.hpp"
+#include "../../../PathFinding/PathFinders/AStarPathFinder.hpp"
 
 PathFindingModel::PathFindingModel()
 {
@@ -68,7 +69,8 @@ float PathFindingModel::getDelay() const
 std::vector<PathFindingAlgorithm> PathFindingModel::getAllAvailablePathFindingAlgorithms()
 {
 	return {
-		PathFindingAlgorithm::Dijkstra
+		PathFindingAlgorithm::Dijkstra,
+		PathFindingAlgorithm::AStar
 	};
 }
 
@@ -85,6 +87,8 @@ void PathFindingModel::setAlgorithm(PathFindingAlgorithm algorithm)
 	case PathFindingAlgorithm::Dijkstra:
 		m_pathFinder = std::make_unique<DijkstraFinder>();
 		break;
+	case PathFindingAlgorithm::AStar:
+		m_pathFinder = std::make_unique<AStarPathFinder>();
 	}
 }
 

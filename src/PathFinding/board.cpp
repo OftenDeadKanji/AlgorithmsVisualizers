@@ -207,7 +207,7 @@ bool Board::isEndCell(int x, int y) const
 	return isEndCell(std::make_pair(x, y));
 }
 
-std::pair<int, int> Board::getEndtPosition() const
+std::pair<int, int> Board::getEndPosition() const
 {
 	return m_end;
 }
