@@ -5,7 +5,7 @@
 #include "../Model/sortingModel.hpp"
 #include "../../Base/View/algorithmSelector.hpp"
 #include "arraySizeSelector.hpp"
-#include "delaySelector.hpp"
+#include "../../Base/View/delaySelector.hpp"
 
 class SortingView
 	: public View

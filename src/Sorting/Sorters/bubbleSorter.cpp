@@ -11,7 +11,6 @@ void BubbleSorter::sort()
 	Timer timer;
 	timer.reset();
 
-
 	while (true)
 	{
 

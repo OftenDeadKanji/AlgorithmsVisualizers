@@ -4,6 +4,9 @@
 #include <vector>
 #include <string>
 #include <ImGUI/imgui.h>
+#include "../../../Sorting/sortingAlgorithm.hpp"
+#include "../../../PathFinding/pathFindingAlgorithm.hpp"
+#include <type_traits>
 
 template<typename T>
 class AlgorithmSelector
@@ -28,7 +31,15 @@ inline void AlgorithmSelector<T>::setAvailableAlgorithms(const std::vector<T>& a
 
 	for (auto algorithm : m_availableAlgorithms)
 	{
-		m_availableAlgorithmsNames.push_back(SortingAlgorithmToString(algorithm));
+		if constexpr (std::is_same_v<T, SortingAlgorithm>)
+		{
+			m_availableAlgorithmsNames.push_back(SortingAlgorithmToString(algorithm));
+		}
+
+		if constexpr (std::is_same_v < T, PathFindingAlgorithm>)
+		{
+			m_availableAlgorithmsNames.push_back(PathFindingAlgorithmToString(algorithm));
+		}
 	}
 }
 

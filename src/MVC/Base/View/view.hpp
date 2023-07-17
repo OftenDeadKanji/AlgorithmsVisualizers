@@ -30,6 +30,9 @@ protected:
 
 	//Callbacks
 	std::function<void()> m_callback_onWindowClose;
+
+	bool m_leftMouseButtonClickThisFrame = false;
+	sf::Vector2f m_leftClickPos;
 };
 
 #endif

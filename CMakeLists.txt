@@ -15,6 +15,8 @@ set(SOURCES
     "src/MVC/Base/View/view.cpp"
     "src/MVC/Base/View/view.hpp"
     "src/MVC/Base/View/algorithmSelector.hpp"
+    "src/MVC/Base/View/delaySelector.cpp"
+    "src/MVC/Base/View/delaySelector.hpp"
     "src/MVC/Base/Controller/controller.cpp"
     "src/MVC/Base/Controller/controller.hpp"
 
@@ -30,8 +32,6 @@ set(SOURCES
     "src/MVC/Sorting/View/sortingView.hpp" 
     "src/MVC/Sorting/View/arraySizeSelector.cpp"
     "src/MVC/Sorting/View/arraySizeSelector.hpp"
-    "src/MVC/Sorting/View/delaySelector.cpp"
-    "src/MVC/Sorting/View/delaySelector.hpp"
     "src/MVC/Sorting/Controller/sortingController.cpp"
     "src/MVC/Sorting/Controller/sortingController.hpp"
 
@@ -44,17 +44,30 @@ set(SOURCES
     "src/Sorting/Sorters/quickSorter.cpp"
     "src/Sorting/Sorters/quickSorter.hpp"
 
+    "src/MVC/PathFinding/Model/pathFindingModel.cpp" 
     "src/MVC/PathFinding/Model/pathFindingModel.hpp" 
     "src/MVC/PathFinding/View/pathFindingView.cpp" 
     "src/MVC/PathFinding/View/pathFindingView.hpp" 
+    "src/MVC/PathFinding/View/boardSizeSelector.cpp"
+    "src/MVC/PathFinding/View/boardSizeSelector.hpp"
     "src/MVC/PathFinding/Controller/pathFindingController.cpp"
     "src/MVC/PathFinding/Controller/pathFindingController.hpp"
+
+    "src/PathFinding/board.cpp"
+    "src/PathFinding/board.hpp"
+    "src/PathFinding/PathFinders/pathFinder.cpp"
+    "src/PathFinding/PathFinders/pathFinder.hpp"
+    "src/PathFinding/PathFinders/dijkstraPathFinder.cpp"
+    "src/PathFinding/PathFinders/dijkstraPathFinder.hpp"
+    "src/PathFinding/PathFinders/AStarPathFinder.cpp"
+    "src/PathFinding/PathFinders/AStarPathFinder.hpp"
 
     "src/Utils/Timer/timer.cpp"
     "src/Utils/Random/random.cpp"
     "src/Utils/Random/random.hpp"
     
- "src/Sorting/Sorters/heapSorter.cpp")
+ "src/Sorting/Sorters/heapSorter.cpp" 
+)
 
 add_executable(AlgorithmVisualizer ${SOURCES})
 
