@@ -6,10 +6,9 @@ class DijkstraFinder
 	: public PathFinder
 {
 public:
+	DijkstraFinder();
+
 	void findPath(Board& board) override;
-
-private:
-
 };
 
 #endif

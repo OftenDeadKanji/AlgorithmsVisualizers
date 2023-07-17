@@ -16,10 +16,20 @@ public:
 
 	void update() override;
 
-	void start();
+	void startFindingPath();
+	void stopFindingPath();
+	void pauseFindingPath();
+	void resumeFindingPath();
+
+	void setDelay(float delay);
+	float getDelay() const;
+	static constexpr float DEFAULT_DELAY = 0.0001f;
 
 	static std::vector<PathFindingAlgorithm> getAllAvailablePathFindingAlgorithms();
 	void setAlgorithm(PathFindingAlgorithm algorithm);
+	PathFindingAlgorithm getCurrentAlgorithm() const;
+
+	bool isFindingPath() const;
 
 	void setStartCell(const std::pair<int, int>& position);
 	bool isStartCell(const std::pair<int, int>& position) const;
@@ -44,6 +54,7 @@ private:
 	std::pair<int, int> m_startCell, m_endCell;
 
 	std::unique_ptr<PathFinder> m_pathFinder;
+	float m_delay = DEFAULT_DELAY;
 };
 
 #endif

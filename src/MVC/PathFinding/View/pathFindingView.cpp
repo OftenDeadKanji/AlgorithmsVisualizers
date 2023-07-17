@@ -5,6 +5,7 @@ PathFindingView::PathFindingView(const PathFindingModel& model, sf::RenderWindow
 	: View(model, window)
 {
 	m_algorithmSelector.setAvailableAlgorithms(PathFindingModel::getAllAvailablePathFindingAlgorithms());
+	m_delaySelector.setDelay(PathFindingModel::DEFAULT_DELAY);
 }
 
 void PathFindingView::renderSceneToTexture()
@@ -41,6 +42,7 @@ void PathFindingView::updateImGuiUIOptionsWindow()
 {
 	m_algorithmSelector.updateAndDisplaySelector();
 	m_boardSizeSelector.updateAndDisplaySelector();
+	m_delaySelector.updateAndDisplaySelector();
 
 	ImGui::RadioButton("StartCell", &m_chosenCellType, START_CELL_VALUE);
 	ImGui::RadioButton("EndCell", &m_chosenCellType, END_CELL_VALUE);
@@ -75,11 +77,38 @@ void PathFindingView::updateImGuiUIOptionsWindow()
 		}
 	}
 
-	if (ImGui::Button("Start"))
+	if (!m_model.isFindingPath())
 	{
-		if (m_callback_onStartButtonClick)
+		if (ImGui::Button("Start"))
 		{
-			m_callback_onStartButtonClick();
+			if (m_callback_onStartButtonClick)
+			{
+				m_callback_onStartButtonClick();
+			}
+		}
+	}
+	else
+	{
+		if (ImGui::Button("Stop"))
+		{
+			if (m_callback_onStopButtonClick)
+			{
+				m_callback_onStopButtonClick();
+			}
+		}
+		if (ImGui::Button("Pause"))
+		{
+			if (m_callback_onPauseButtonClick)
+			{
+				m_callback_onPauseButtonClick();
+			}
+		}
+		if (ImGui::Button("Resume"))
+		{
+			if (m_callback_onResumeButtonClick)
+			{
+				m_callback_onResumeButtonClick();
+			}
 		}
 	}
 }
@@ -92,6 +121,11 @@ void PathFindingView::setAlgorithmSelectCallback(std::function<void(PathFindingA
 void PathFindingView::setBoardSizeChangeCallback(std::function<void(std::pair<int, int>)> callback)
 {
 	m_boardSizeSelector.setBoardSizeChangeCallback(callback);
+}
+
+void PathFindingView::setDelayChangeCallback(std::function<void(float)> callback)
+{
+	m_delaySelector.setDelayValueChangeCallback(callback);
 }
 
 void PathFindingView::setStartCellAddCallback(std::function<void(std::pair<int, int>)> callback)
@@ -117,6 +151,21 @@ void PathFindingView::setObstacleCellAddCallback(std::function<void(std::pair<in
 void PathFindingView::setStartButtonCallback(std::function<void()> callback)
 {
 	m_callback_onStartButtonClick = std::move(callback);
+}
+
+void PathFindingView::setStopButtonCallback(std::function<void()> callback)
+{
+	m_callback_onStopButtonClick = std::move(callback);
+}
+
+void PathFindingView::setPauseButtonCallback(std::function<void()> callback)
+{
+	m_callback_onPauseButtonClick = std::move(callback);
+}
+
+void PathFindingView::setResumeButtonCallback(std::function<void()> callback)
+{
+	m_callback_onResumeButtonClick = std::move(callback);
 }
 
 void PathFindingView::setDisplayedBoardSize(const std::pair<int, int>& size)

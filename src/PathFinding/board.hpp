@@ -14,7 +14,7 @@ public:
 		Start,
 		End,
 
-		Visited,
+		Searched,
 		Path
 	};
 	using Weight = double;
@@ -75,6 +75,7 @@ public:
 	std::vector<int> getNeighboursFlatPositions(int x, int y) const;
 
 	void initWeights();
+	void semiClear(); // clears Searched and Path
 private:
 	std::pair<int, int> m_size;
 	std::vector<std::vector<CellType>> m_cells;

@@ -4,19 +4,65 @@
 PathFindingModel::PathFindingModel()
 {
 	setBoardSize(DEFAULT_BOARD_SIZE);
+
+	auto algorithms = getAllAvailablePathFindingAlgorithms();
+	if (!algorithms.empty())
+	{
+		setAlgorithm(algorithms[0]);
+	}
 }
 
 void PathFindingModel::update()
 {}
 
-void PathFindingModel::start()
+void PathFindingModel::startFindingPath()
 {
+	m_board.semiClear();
 	m_board.initWeights();
 
 	if (m_pathFinder)
 	{
+		m_pathFinder->setDelay(m_delay);
 		m_pathFinder->start(m_board);
 	}
+}
+
+void PathFindingModel::stopFindingPath()
+{
+	if (m_pathFinder)
+	{
+		m_pathFinder->stop();
+	}
+}
+
+void PathFindingModel::pauseFindingPath()
+{
+	if (m_pathFinder)
+	{
+		m_pathFinder->pause();
+	}
+}
+
+void PathFindingModel::resumeFindingPath()
+{
+	if (m_pathFinder)
+	{
+		m_pathFinder->resume();
+	}
+}
+
+void PathFindingModel::setDelay(float delay)
+{
+	m_delay = delay;
+	if (m_pathFinder)
+	{
+		m_pathFinder->setDelay(m_delay);
+	}
+}
+
+float PathFindingModel::getDelay() const
+{
+	return m_delay;
 }
 
 std::vector<PathFindingAlgorithm> PathFindingModel::getAllAvailablePathFindingAlgorithms()
@@ -28,12 +74,28 @@ std::vector<PathFindingAlgorithm> PathFindingModel::getAllAvailablePathFindingAl
 
 void PathFindingModel::setAlgorithm(PathFindingAlgorithm algorithm)
 {
+	if (m_pathFinder)
+	{
+		m_pathFinder->stop();
+		m_pathFinder->waitToFinishWorking();
+	}
+
 	switch (algorithm)
 	{
 	case PathFindingAlgorithm::Dijkstra:
 		m_pathFinder = std::make_unique<DijkstraFinder>();
 		break;
 	}
+}
+
+PathFindingAlgorithm PathFindingModel::getCurrentAlgorithm() const
+{
+	return m_pathFinder ? m_pathFinder->getAlgorithm() : PathFindingAlgorithm::None;
+}
+
+bool PathFindingModel::isFindingPath() const
+{
+	return m_pathFinder ? m_pathFinder->isFinding() : false;
 }
 
 void PathFindingModel::setStartCell(const std::pair<int, int>& position)

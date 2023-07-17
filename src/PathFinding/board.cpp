@@ -58,6 +58,7 @@ void Board::setSize(const std::pair<int, int>& size)
 			cell = CellType::Normal;
 		}
 	}
+
 }
 
 std::pair<int, int> Board::getSize() const
@@ -146,7 +147,7 @@ bool Board::isObstacleCell(int x, int y) const
 
 void Board::setStartCell(const std::pair<int, int>& position)
 {
-	if (m_start.first >= 0 || m_start.second >= 0)
+	if (m_start.first >= 0 && m_start.first < m_size.first && m_start.second >= 0 && m_start.second < m_size.second)
 	{
 		m_cells[m_start.first][m_start.second] = CellType::Normal;
 	}
@@ -182,7 +183,7 @@ int Board::getStartFlatPosition() const
 
 void Board::setEndCell(const std::pair<int, int>& position)
 {
-	if (m_end.first >= 0 || m_end.second >= 0)
+	if (m_end.first >= 0 && m_end.first < m_size.first && m_end.second >= 0 && m_end.second < m_size.second)
 	{
 		m_cells[m_end.first][m_end.second] = CellType::Normal;
 	}
@@ -218,7 +219,7 @@ int Board::getEndFlatPosition() const
 
 void Board::setVisitedCell(const std::pair<int, int>& position)
 {
-	m_cells[position.first][position.second] = CellType::Visited;
+	m_cells[position.first][position.second] = CellType::Searched;
 }
 
 void Board::setVisitedCell(int x, int y)
@@ -228,7 +229,7 @@ void Board::setVisitedCell(int x, int y)
 
 bool Board::isVisitedCell(const std::pair<int, int>& position) const
 {
-	return m_cells[position.first][position.second] == CellType::Visited;;
+	return m_cells[position.first][position.second] == CellType::Searched;;
 }
 
 bool Board::isVisitedCell(int x, int y) const
@@ -368,6 +369,20 @@ void Board::initWeights()
 						m_weightGraph[posFlat][neighbourFlat] = NormalWeight;
 					}
 				}
+			}
+		}
+	}
+}
+
+void Board::semiClear()
+{
+	for (auto& column : m_cells)
+	{
+		for (auto& cell : column)
+		{
+			if (cell == CellType::Searched || cell == CellType::Path)
+			{
+				cell = CellType::Normal;
 			}
 		}
 	}

@@ -3,6 +3,10 @@
 #include "../board.hpp"
 #include <queue>
 
+DijkstraFinder::DijkstraFinder()
+	: PathFinder(PathFindingAlgorithm::Dijkstra)
+{}
+
 void DijkstraFinder::findPath(Board& board)
 {
 	Timer timer;
@@ -45,6 +49,14 @@ void DijkstraFinder::findPath(Board& board)
 
 			previous[i][j] = std::make_pair(-1, -1);
 			queue.push(std::make_pair(i, j));
+
+			if (m_stopFinding)
+			{
+				m_isFinding = false;
+				return;
+			}
+
+			while (!m_continueFinding.load());
 		}
 	}
 
@@ -67,6 +79,14 @@ void DijkstraFinder::findPath(Board& board)
 
 			queue.push(elem);
 		}
+
+		if (m_stopFinding)
+		{
+			m_isFinding = false;
+			return;
+		}
+
+		while (!m_continueFinding.load());
 
 		auto u = queue.top();
 		queue.pop();
@@ -92,18 +112,32 @@ void DijkstraFinder::findPath(Board& board)
 						auto prevCell = previous[currentCell.first][currentCell.second];
 						if (prevCell == start)
 						{
+							m_isFinding = false;
+							m_finishedFinding = true;
+
 							return;
 						}
 
 						board.setPathCell(prevCell);
 						currentCell = prevCell;
 					}
-
-					return;
 				}
 			}
-		}
 
+			if (m_stopFinding)
+			{
+				m_isFinding = false;
+				return;
+			}
+
+			while (!m_continueFinding.load());
+
+			while (timer.getTimeInSeconds() < m_latency)
+			{
+				std::this_thread::yield();
+			}
+
+			timer.reset();
+		}
 	}
-	
 }

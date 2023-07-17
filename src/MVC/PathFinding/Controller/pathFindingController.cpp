@@ -13,6 +13,11 @@ PathFindingController::PathFindingController(PathFindingModel& model, PathFindin
 			model.setBoardSize(size);
 		});
 
+	m_view.setDelayChangeCallback([&](float delay)
+		{
+			m_model.setDelay(delay);
+		});
+
 	m_view.setStartCellAddCallback([&](std::pair<int, int> position)
 		{
 			model.setStartCell(position);
@@ -32,7 +37,19 @@ PathFindingController::PathFindingController(PathFindingModel& model, PathFindin
 
 	m_view.setStartButtonCallback([&]()
 		{
-			model.start();
+			model.startFindingPath();
+		});
+	m_view.setStopButtonCallback([&]()
+		{
+			model.stopFindingPath();
+		});
+	m_view.setPauseButtonCallback([&]()
+		{
+			model.pauseFindingPath();
+		});
+	m_view.setResumeButtonCallback([&]()
+		{
+			model.resumeFindingPath();
 		});
 
 	m_view.setDisplayedBoardSize(PathFindingModel::DEFAULT_BOARD_SIZE);
